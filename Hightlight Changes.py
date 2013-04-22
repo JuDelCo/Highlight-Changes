@@ -10,10 +10,10 @@ class HighlightUnsavedCommand(sublime_plugin.EventListener):
 		
 		unsaved = view.get_regions('unsaved') + [view.line(s) for s in view.sel()]
 
-		if not isinstance(view.file_name(), types.NoneType):
+		if not isinstance(view.file_name(), type(None)):
 			
 			with open(view.file_name(), 'r') as f:
-					read_data = unicode(f.read())
+					read_data = str(f.read())
 
 			for sel in view.sel():
 				if read_data[view.line(sel).begin():view.line(sel).end()] == view.substr(view.line(sel)):
